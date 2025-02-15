@@ -106,7 +106,7 @@
 
     <script>
         function calculateCountdown() {
-            const birthday = new Date('2025-02-15');
+            const birthday = new Date('2025-02-16');
             const today = new Date();
             
             const timeDiff = birthday - today;
@@ -118,7 +118,7 @@
 
         document.getElementById('yesButton').addEventListener('click', function() {
             const today = new Date();
-            const birthday = new Date('2025-02-15');
+            const birthday = new Date('2025-02-16');
 
             if (today.getMonth() === birthday.getMonth() && today.getDate() === birthday.getDate()) {
                 document.getElementById('congratulations').classList.remove('hidden');
