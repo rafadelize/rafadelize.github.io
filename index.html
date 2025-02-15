@@ -88,8 +88,8 @@
 </head>
 <body>
     <div class="container">
-        <h1>Contagem Regressiva para o Aniversário da Lary</h1>
-        
+        <h1>Contagem Regressiva para o Aniversário</h1>
+        <p>Faltam <span id="countdown"></span> dias para o seu aniversário!</p>
 
         <div class="question">
             <p>Hoje é seu aniversário?</p>
@@ -99,14 +99,14 @@
         <button id="noButton" class="move-button">Não</button>
         
         <div id="congratulations" class="hidden">
-            <p>🎉 Parabéns Lary 1.8! 🎉</p>
+            <p>🎉 Parabéns! 🎉</p>
             <img id="birthdayImage" src="" alt="Imagem de aniversário" />
         </div>
     </div>
 
     <script>
         function calculateCountdown() {
-            const birthday = new Date('2025-02-16');
+            const birthday = new Date('2025-02-15');
             const today = new Date();
             
             const timeDiff = birthday - today;
@@ -117,18 +117,20 @@
         calculateCountdown();
 
         document.getElementById('yesButton').addEventListener('click', function() {
-            const today = new Date();
-            const birthday = new Date('2025-02-16');
+        const today = new Date().toLocaleString("en-US", { timeZone: "America/Sao_Paulo" });
+        const todayDate = new Date(today);
 
-            if (today.getMonth() === birthday.getMonth() && today.getDate() === birthday.getDate()) {
-                document.getElementById('congratulations').classList.remove('hidden');
-                document.getElementById('birthdayImage').src = 'img/1739580908282.jpg';
-                document.getElementById('noButton').classList.remove('move-button'); // Para a animação
-                document.getElementById('noButton').classList.add('hidden'); // Esconde o botão "Não"
-            } else {
-                alert('Hoje não é seu aniversário, mas fique de olho para o grande dia!');
-            }
-        });
+        const birthday = new Date('2025-02-15T00:00:00-03:00'); // Fuso horário de Brasília (-03:00)
+
+        if (todayDate.getMonth() === birthday.getMonth() && todayDate.getDate() === birthday.getDate()) {
+            document.getElementById('congratulations').classList.remove('hidden');
+            document.getElementById('birthdayImage').src = 'sua_imagem.jpg';
+            document.getElementById('noButton').classList.remove('move-button'); // Para a animação
+            document.getElementById('noButton').classList.add('hidden'); // Esconde o botão "Não"
+        } else {
+            alert('Hoje não é seu aniversário, mas fique de olho para o grande dia!');
+        }
+    });
     </script>
 </body>
 </html>
